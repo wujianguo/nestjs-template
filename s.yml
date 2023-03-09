@@ -11,7 +11,7 @@ vars:
     description: 'Template'
 
 services:
-  helloworld:
+  nestjs:
     component: fc
     actions:
       pre-deploy:
@@ -27,7 +27,8 @@ services:
         name: ${vars.functionName}
         description: ${vars.description}
         codeUri: '.'
-        memorySize: 258
+        runtime: custom
+        memorySize: 256
         timeout: 60
         caPort: 3000
         customRuntimeConfig:

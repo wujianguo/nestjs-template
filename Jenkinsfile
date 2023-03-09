@@ -17,9 +17,10 @@ pipeline {
           steps {
             sh 'rm -rf /usr/lib/node_modules/npm/'
             dir ('/root/.cache/downloads') {
-              sh 'wget -nc "https://coding-public-generic.pkg.coding.net/public/downloads/node-linux-x64.tar.xz?version=v18.9.1" -O node-v18.9.1-linux-x64.tar.xz | true'
-              sh 'tar -xf node-v18.9.1-linux-x64.tar.xz -C /usr --strip-components 1'
+              sh 'wget -nc "https://coding-public-generic.pkg.coding.net/public/downloads/node-linux-x64.tar.xz?version=v16.18.0" -O node-v16.18.0-linux-x64.tar.xz | true'
+              sh 'tar -xf node-v16.18.0-linux-x64.tar.xz -C /usr --strip-components 1'
               }
+            sh 'npm install @serverless-devs/s -g --registry=https://registry.npmmirror.com'
             // sh 'npm install -g @nestjs/cli'
             // sh 'npm ci'
             // sh 'npm run build'
@@ -31,7 +32,6 @@ pipeline {
       stage('Deploy to serverless') {
         steps {
           // sh 'zip -r code.zip .'
-          sh 'npm install @serverless-devs/s -g --registry=https://registry.npmmirror.com'
           sh 's config add --AccessKeyID ${AccessKeyId} --AccessKeySecret ${AccessKeySecret} --AccountID ${AccountID} --access default'
           sh 's deploy'
         }
