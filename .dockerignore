@@ -1,0 +1,9 @@
+Dockerfile
+.dockerignore
+node_modules
+dist
+.github
+.vscode
+.gitlab-ci.yml
+s.yml
+vercel.json
