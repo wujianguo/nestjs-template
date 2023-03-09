@@ -1,0 +1,18 @@
+name: Serverless Devs Project CI/CD
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  serverless-devs-cd:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 18
+      - run: npm install -g @serverless-devs/s
+      - run: s config add --AccessKeyID ${{secrets.ALIYUN_ACCESS_KEY_ID}} --AccessKeySecret ${{secrets.ALIYUN_ACCESS_KEY_SECRET}} --AccountID ${secrets.ALIYUN_ACCOUNT_ID} -access default
+      - run: s deploy
