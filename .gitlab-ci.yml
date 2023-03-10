@@ -1,0 +1,9 @@
+default:
+  image: node:18-alpine
+
+deploy:
+  stage: deploy
+  script:
+    - npm install -g @serverless-devs/s
+    - s config add --AccessKeyID '$ALIYUN_ACCESS_KEY_ID' --AccessKeySecret '$ALIYUN_ACCESS_KEY_SECRET' --AccountID '$ALIYUN_ACCOUNT_ID' --access default
+    - s deploy
