@@ -1,4 +1,4 @@
-name: Serverless Devs Project CI/CD
+name: Build and Deploy Aliyun serverless
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - "main"
 
 jobs:
-  serverless-devs-cd:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
