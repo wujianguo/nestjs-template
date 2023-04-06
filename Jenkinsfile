@@ -33,7 +33,7 @@ pipeline {
         steps {
           // sh 'zip -r code.zip .'
           sh 's config add --AccessKeyID ${AccessKeyId} --AccessKeySecret ${AccessKeySecret} --AccountID ${AccountID} --access default'
-          sh 's deploy'
+          sh 's deploy -y --use-local'
         }
       }
     }
